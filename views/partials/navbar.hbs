@@ -9,11 +9,13 @@
 
       <ul class="navbar-nav my-2 my-lg-0">
         {{!-- Check if the currentUser exists and render login|register or logout --}}
+        {{#if currentUser}}
         <li class="nav-item">
           <form action="/logout" method="POST">
             <span class="mr-3 text-muted">{{currentUser.email}}</span>
             <button type="submit" class="btn btn-danger btn-sm" href="/logout">Logout</button>
           </form>
+        {{else}}
         </li>
         <li class="nav-item {{active path '/register'}}">
           <a class="nav-link" href="/register">Register</a>
@@ -21,6 +23,7 @@
         <li class="nav-item {{active path '/login'}}">
           <a class="nav-link" href="/login">Login</a>
         </li>
+        {{/if}}
       </ul>
     </div>
   </div>
